@@ -6,18 +6,20 @@ const hbs = require('hbs')
 //Middleware
 
 
-//Middlere Globales
-
+//Middlere Global
 server.use(express.static(__dirname + '/public'))
 
 //Para poder usar partials
 hbs.registerPartials(__dirname + '/views/partials')
-
 server.set('view engine', 'hbs');
 
-hbs.registerHelper('getYear', () => {
-    return new Date().getFullYear()
-})
+
+
+////////////////////////////////////////////////////////////////////////////
+//Helpers
+
+//Importamos los helpers
+require('./hbs/helpers');
 
 
 ////////////////////////////////////////////////////////////////////////////
@@ -28,7 +30,7 @@ hbs.registerHelper('getYear', () => {
 server.get('/', (req, resp) => {
 
     resp.render('home.hbs', {
-        name: "Nicolas Palermo ",
+        name: "nicolas palermo",
     })
 
 })
